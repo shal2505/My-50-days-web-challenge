@@ -1,6 +1,6 @@
 # Day 04 – Reusable Profile Cards
 
-On **Day** 4 of the **50 Days Dev Web Development Challenge**, I learned how to build reusable UI components by creating profile cards for the Core Team section. Instead of displaying plain text, I structured each team member's information into a consistent card layout containing a profile image, name, role, and a "View Profile" button.
+On **Day 4** of the **50 Days Dev Web Development Challenge**, I learned how to build reusable UI components by creating profile cards for the Core Team section. Instead of displaying plain text, I structured each team member's information into a consistent card layout containing a profile image, name, role, and a "View Profile" button.
 
 I used CSS to design visually appealing cards by adding padding, rounded corners, and subtle box shadows. To maintain a clear visual hierarchy, I styled the member names to stand out while keeping the role text smaller and lighter. I also completed the bonus challenge by adding a smooth hover animation that slightly lifts each card and enhances its shadow, creating a modern and interactive user experience.
 
