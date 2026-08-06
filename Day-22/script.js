@@ -513,18 +513,21 @@ window.addEventListener("scroll", throttledScroll);
 
 const observer = new IntersectionObserver(function (entries) {
 
-    if (entry.isIntersecting) {
+    entries.forEach(function (entry) {
 
-    entry.target.classList.add("show");
+        if (entry.isIntersecting) {
 
-} else {
+            entry.target.classList.add("show");
 
-    entry.target.classList.remove("show");
+        } else {
 
-}
+            entry.target.classList.remove("show");
+
+        }
 
     });
 
+});
 
 const hiddenElements = document.querySelectorAll(".hidden");
 
