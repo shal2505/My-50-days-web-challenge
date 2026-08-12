@@ -2175,7 +2175,4 @@ document.addEventListener(
     initApp
 );
 
-// ==========================================
-// GITHUB DEVELOPER LOOKUP
-// ==========================================
 
