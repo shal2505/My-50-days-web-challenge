@@ -1,0 +1,1250 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+:root {
+    --primary-color: #0056b3;
+    --text-color: #333333;
+    --bg-color: #f8fafc;
+    --main-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--main-font);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 20px;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* =========================
+   HEADER & NAVIGATION
+========================= */
+
+header {
+    background: #ffffff;
+    padding: 15px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav h2 {
+    margin-right: 40px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+#theme-toggle {
+    margin-left: 20px;
+}
+
+.menu-toggle {
+    display: none;
+    width: 35px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+}
+
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+#hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 55vh;
+    text-align: center;
+
+    background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+
+    color: white;
+    border-radius: 20px;
+    padding: 70px 30px;
+    margin: 40px 0;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+#hero h1 {
+    color: white;
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+#hero p {
+    max-width: 650px;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    opacity: 0.95;
+}
+
+#hero a {
+    display: inline-block;
+    background: white;
+    color: #0056b3;
+    padding: 14px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#hero a:hover {
+    background-color: #f1f5f9;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+#about h2,
+#initiatives h2,
+#team h2 {
+    margin-bottom: 15px;
+}
+
+#about p {
+    line-height: 1.6;
+}
+
+#team h3 {
+    margin-bottom: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* =========================
+   TEAM SECTION
+========================= */
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.profile-card {
+    background-color: #ffffff;
+    width: 210px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+            box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.profile-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+}
+
+.profile-card h3 {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.profile-card p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.profile-card a {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+.profile-card a:hover {
+    background-color: #003d80;
+}
+
+/* =========================
+   INITIATIVES SECTION
+========================= */
+
+.initiatives-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.initiative-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.active-project {
+    border: 3px solid #28a745;
+}
+
+.completed-project {
+    border: 3px solid #6c757d;
+}
+
+.initiative-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.initiative-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.initiative-card p {
+    color: #666;
+}
+
+#team h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+#team h3 {
+    margin-bottom: 20px;
+}
+
+.featured {
+    grid-column: span 2;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 900px) {
+
+    .initiatives-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .initiatives-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+    display: flex;
+}
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 15px;
+        gap: 10px;
+    }
+
+    .nav-links.nav-active {
+        display: flex;
+    }
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+}
+
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+}
+    
+}
+
+/* =========================
+   MEMBERSHIP FORM
+========================= */
+
+#membership {
+    margin: 60px 0;
+}
+
+#membership h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+#membership form {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+#membership label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+#membership input,
+#membership textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#membership input:focus,
+#membership textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+}
+
+#membership button {
+    display: inline-block;
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#membership button:hover {
+    background-color: #003d80;
+}
+
+#membership button:disabled {
+    background-color: #b3b3b3;
+    cursor: not-allowed;
+}
+
+#membership input:focus:valid,
+#membership textarea:focus:valid {
+    border-color: #28a745;
+}
+
+#membership input:focus:invalid,
+#membership textarea:focus:invalid {
+    border-color: #dc3545;
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    left: 20px;
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+}
+
+.active-state {
+    color: var(--primary-color);
+}
+
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.error-border {
+    border: 2px solid red !important;
+}
+
+#search-projects {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    margin: 20px auto 30px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#search-projects:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+}
+
+#draft-status {
+    margin-top: 15px;
+    color: #28a745;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.dark-theme {
+    --primary-color: #4da3ff;
+    --text-color: #f1f1f1;
+    --bg-color: #121212;
+}
+
+.dark-theme header {
+    background-color: #1e1e1e;
+}
+
+.dark-theme .profile-card,
+.dark-theme .initiative-card,
+.dark-theme #membership form,
+.dark-theme #testimonial-container {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.dark-theme input,
+.dark-theme textarea {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    border: 1px solid #555;
+}
+
+.dark-theme input::placeholder,
+.dark-theme textarea::placeholder {
+    color: #bbbbbb;
+}
+
+.dark-theme nav ul li a,
+.dark-theme h2,
+.dark-theme h3,
+.dark-theme p,
+.dark-theme label {
+    color: white;
+}
+
+/* =========================
+   TESTIMONIALS
+========================= */
+
+#testimonials{
+    margin:60px 0;
+    text-align:center;
+}
+
+#testimonial-container{
+
+    max-width:700px;
+    margin:30px auto;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+
+}
+
+#testimonial-name{
+
+    color:var(--primary-color);
+
+    margin-bottom:15px;
+
+}
+
+#testimonial-quote{
+
+    font-size:18px;
+
+    font-style:italic;
+
+    line-height:1.7;
+
+}
+
+.testimonial-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.testimonial-buttons button {
+    padding: 10px 20px;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.testimonial-buttons button:hover {
+    opacity: 0.85;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+#modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+#modal {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    position: relative;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+#modal-title {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+#close-modal {
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    border: none;
+
+    background: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+.dark-theme #modal {
+    background: #1e1e1e;
+    color: white;
+}
+
+.dark-theme #close-modal {
+    color: white;
+}
+
+/* =========================
+   TASK TRACKER
+========================= */
+
+#task-tracker {
+    margin: 60px 0;
+}
+
+#task-tracker h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.task-input-area {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+#task-input {
+    width: 350px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#add-task-btn {
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#add-task-btn:hover {
+    background-color: #003d80;
+}
+
+#task-list {
+    max-width: 700px;
+    margin: auto;
+    list-style: none;
+    padding: 0;
+}
+
+#task-list li {
+    background: white;
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
+}
+
+.task-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.delete-btn {
+    background: crimson;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.delete-btn:hover {
+    background: darkred;
+}
+
+/* Dark Theme */
+
+.dark-theme #task-list li {
+    background: #1e1e1e;
+    color: white;
+}
+
+.dark-theme #task-input {
+    background: #2a2a2a;
+    color: white;
+    border: 1px solid #555;
+}
+
+.card-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:15px;
+}
+
+.status-badge{
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:0.85rem;
+    font-weight:600;
+}
+
+.active-project{
+    background:#22c55e;
+    color:white;
+}
+
+.completed-project{
+    background:#9ca3af;
+    color:white;
+}
+
+.card-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:20px;
+}
+
+.status-badge{
+    padding:6px 15px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:bold;
+    color:white;
+}
+
+.hidden{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all 0.6s ease-out;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+#kanban-board {
+    margin: 60px 0;
+}
+
+#kanban-board h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.board {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 1;
+    min-width: 250px;
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 12px;
+    min-height: 350px;
+    border: 2px solid #2f80ed;
+}
+
+.column h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.task-card {
+    background: #2f80ed;
+    color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    cursor: grab;
+    transition: 0.3s;
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+}
+
+.is-dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+/* ==========================================
+   GITHUB DEVELOPER LOOKUP - DAY 26
+   ========================================== */
+
+/* ==========================================
+   GITHUB LOOKUP PAGE
+   ========================================== */
+
+#github-lookup {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 20px 80px;
+}
+
+#github-lookup h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 15px;
+    color: #3498db;
+}
+
+#github-lookup > p {
+    margin-bottom: 25px;
+    color: inherit;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   SEARCH AREA
+   ========================================== */
+
+.github-search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 650px;
+}
+
+.github-search-box input {
+    flex: 1;
+    min-width: 0;
+    height: 50px;
+    padding: 0 16px;
+
+    border: 2px solid #3498db;
+    border-radius: 8px;
+
+    background: #222;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-family: inherit;
+
+    outline: none;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.github-search-box input::placeholder {
+    color: #bdbdbd;
+}
+
+.github-search-box input:focus {
+    border-color: #5dade2;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+
+/* ==========================================
+   LOOKUP BUTTON
+   ========================================== */
+
+#search-dev-btn {
+    height: 50px;
+    padding: 0 25px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #3498db;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#search-dev-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+#search-dev-btn:active {
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   PROFILE RESULT AREA
+   ========================================== */
+
+#dev-profile-card {
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* ==========================================
+   GITHUB DEVELOPER LOOKUP
+========================================== */
+
+#github-lookup {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 20px 80px;
+}
+
+#github-lookup h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: #3498db;
+}
+
+#github-lookup > p {
+    margin-bottom: 25px;
+}
+
+/* ==========================================
+   SEARCH BOX
+========================================== */
+
+.github-search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 650px;
+}
+
+.github-search-box input {
+    flex: 1;
+    min-width: 0;
+    height: 50px;
+    padding: 0 16px;
+
+    border: 2px solid #3498db;
+    border-radius: 8px;
+
+    /* LIGHT MODE */
+    background: #ffffff;
+    color: #222222;
+
+    font-size: 16px;
+    outline: none;
+}
+
+.github-search-box input::placeholder {
+    color: #777777;
+}
+
+.github-search-box input:focus {
+    border-color: #2980b9;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* ==========================================
+   LOOKUP BUTTON
+========================================== */
+
+#search-dev-btn {
+    height: 50px;
+    padding: 0 25px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #3498db;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+#search-dev-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+#search-dev-btn:active {
+    transform: translateY(0);
+}
+
+/* ==========================================
+   GITHUB PROFILE CARD
+========================================== */
+
+#dev-profile-card {
+    margin-top: 30px;
+}
+
+.github-profile-card {
+    width: 100%;
+    max-width: 450px;
+
+    padding: 30px;
+
+    /* LIGHT MODE */
+    background: #ffffff;
+    color: #222222;
+
+    border: 1px solid #dddddd;
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+    margin: 0 auto;
+}
+
+/* ==========================================
+   GITHUB AVATAR
+========================================== */
+
+.github-avatar {
+    width: 120px;
+    height: 120px;
+
+    object-fit: cover;
+    border-radius: 50%;
+
+    display: block;
+    margin: 0 auto 15px;
+}
+
+/* ==========================================
+   PROFILE TEXT
+========================================== */
+
+.github-profile-card h3 {
+    margin: 10px 0;
+    font-size: 24px;
+    color: #222222;
+}
+
+.github-profile-card p {
+    color: #555555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   VIEW GITHUB PROFILE BUTTON
+========================================== */
+
+.github-profile-btn {
+    display: inline-block;
+
+    padding: 12px 22px;
+
+    background: #3498db;
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.github-profile-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   ERROR / LOADING
+========================================== */
+
+.github-error {
+    margin-top: 20px;
+    color: #e74c3c;
+}
+
+.github-message {
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.dark-theme #github-lookup {
+    color: #ffffff;
+}
+
+body.dark-theme #github-lookup h1 {
+    color: #3498db;
+}
+
+body.dark-theme .github-search-box input {
+    background: #222222;
+    color: #ffffff;
+    border-color: #3498db;
+}
+
+body.dark-theme .github-search-box input::placeholder {
+    color: #bbbbbb;
+}
+
+body.dark-theme .github-profile-card {
+    background: #222222;
+    color: #ffffff;
+    border-color: #333333;
+}
+
+body.dark-theme .github-profile-card h3 {
+    color: #ffffff;
+}
+
+body.dark-theme .github-profile-card p {
+    color: #cccccc;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+    #github-lookup {
+        padding: 35px 20px 60px;
+    }
+
+    #github-lookup h1 {
+        font-size: 34px;
+    }
+
+    .github-search-box {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 100%;
+    }
+
+    .github-search-box input,
+    #search-dev-btn {
+        width: 100%;
+    }
+
+}
+
+/* ==========================================
+   FOOTER ALWAYS AT BOTTOM
+========================================== */
+
+footer {
+    width: 100%;
+    margin-top: auto;
+}
