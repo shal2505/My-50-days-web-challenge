@@ -1550,6 +1550,7 @@ function homePage() {
 
 </section>
 
+
         <!-- CORE TEAM -->
 
         ${teamSection()}
@@ -1558,11 +1559,6 @@ function homePage() {
         <!-- MEMBERSHIP -->
 
         ${membershipSection()}
-
-
-        <!-- PROPOSE AN INITIATIVE -->
-
-          ${proposalSection()}
 
 
         <!-- TESTIMONIALS -->
@@ -2179,6 +2175,8 @@ function initiativesPage() {
                 </div>
 
             </div>
+
+            ${proposalSection()}
 
         </section>
 
