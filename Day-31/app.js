@@ -601,90 +601,122 @@ let isLoading = false;
 
 async function fetchNextPage() {
 
-    if (isLoading) return;
+    // ==========================================
+    // GET HTML ELEMENTS
+    // ==========================================
+
+    const dataFeed =
+        document.getElementById("data-feed");
+
+    const sentinel =
+        document.getElementById("scroll-sentinel");
+
+    if (!dataFeed || !sentinel) {
+        return;
+    }
+
+
+    // ==========================================
+    // LOADING LOCK
+    // ==========================================
+
+    if (isLoading) {
+        return;
+    }
 
     isLoading = true;
 
-    const feed = document.getElementById("data-feed");
-    const sentinel = document.getElementById("scroll-sentinel");
+    sentinel.textContent = "Loading more...";
+
 
     try {
+
+        // ==========================================
+        // FETCH NEXT PAGE
+        // ==========================================
 
         const response = await fetch(
             `https://jsonplaceholder.typicode.com/posts?_page=${currentPage}&_limit=${limit}`
         );
 
+
         if (!response.ok) {
-            throw new Error("Failed to fetch initiatives");
+
+            throw new Error(
+                `Request failed: ${response.status}`
+            );
+
         }
 
-        const data = await response.json();
 
-        // No more data
+        // ==========================================
+        // CONVERT RESPONSE TO JSON
+        // ==========================================
+
+        const data =
+            await response.json();
+
+
+        // ==========================================
+        // BONUS - END OF DATA
+        // ==========================================
+
         if (data.length === 0) {
-            sentinel.textContent = "You've reached the end of the initiatives.";
-            observer.disconnect();
+
+            sentinel.textContent =
+                "You've reached the end!";
+
             return;
+
         }
 
-        data.forEach(post => {
 
-            feed.innerHTML += `
-                <article class="initiative-card community-initiative">
+        // ==========================================
+        // DISPLAY POSTS
+        // ==========================================
 
-                    <div class="initiative-header">
+        data.forEach(function (post) {
 
-                        <span class="initiative-number">
-                            #${String(post.id).padStart(2, "0")}
-                        </span>
+            dataFeed.innerHTML += `
 
-                        <span class="initiative-status">
-                            ● ACTIVE
-                        </span>
-
-                    </div>
+                <div class="initiative-card">
 
                     <h3>
-                        Community Initiative #${post.id}
+                        ${post.title}
                     </h3>
 
                     <p>
-                        A Synexus community initiative focused on
-                        learning, collaboration, innovation and
-                        student development.
+                        ${post.body}
                     </p>
 
-                    <div class="initiative-footer">
+                </div>
 
-                        <span>
-                            🌐 Synexus Community
-                        </span>
-
-                        <span>
-                            Community Initiative
-                        </span>
-
-                    </div>
-
-                </article>
             `;
 
         });
 
+
     } catch (error) {
 
-        console.error("Error loading initiatives:", error);
+        console.error(
+            "Pagination Error:",
+            error
+        );
 
         sentinel.textContent =
-            "Unable to load more initiatives.";
+            "Unable to load more posts.";
 
     } finally {
+
+        // ==========================================
+        // UNLOCK
+        // ==========================================
 
         isLoading = false;
 
     }
-}
 
+}
 
 // ==========================================
 // DAY 31 - INTERSECTION OBSERVER
@@ -717,7 +749,7 @@ function setupInfiniteScroll() {
         });
 
     observer.observe(sentinel);
- 
+
     // Load the first page immediately
     currentPage = 1;
 
@@ -732,6 +764,45 @@ function saveTasks() {
         "synexus_tasks",
         JSON.stringify(taskState)
     );
+
+}
+
+// ==========================================
+// DAY 31 - INTERSECTION OBSERVER
+// ==========================================
+
+function setupInfiniteScroll() {
+
+    const sentinel =
+        document.getElementById("scroll-sentinel");
+
+    if (!sentinel) {
+        return;
+    }
+
+    const observer =
+        new IntersectionObserver(function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    currentPage++;
+
+                    fetchNextPage();
+
+                }
+
+            });
+
+        });
+
+    observer.observe(sentinel);
+
+    // Load the first page immediately
+    currentPage = 1;
+
+    fetchNextPage();
 
 }
 
