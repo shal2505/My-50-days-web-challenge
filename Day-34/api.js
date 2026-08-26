@@ -1,0 +1,183 @@
+import { fetchWithRetry } from "./utils.js";
+const userCache = new Map();
+
+// ==========================================
+// API MODULE - DAY 32
+// ==========================================
+
+// ==========================================
+// DAY 29 - POST REQUEST
+// ==========================================
+
+export async function submitInitiative(newInitiative) {
+
+    const response = await fetchWithRetry(
+        "https://jsonplaceholder.typicode.com/posts",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-type":
+                    "application/json; charset=UTF-8"
+            },
+
+            body: JSON.stringify(newInitiative)
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error(
+            `Request failed: ${response.status}`
+        );
+    }
+
+    return await response.json();
+}
+
+
+// ==========================================
+// DAY 30 - PUT REQUEST
+// ==========================================
+
+export async function updateInitiative(id, updatedInitiative) {
+
+    const response = await fetchWithRetry(
+        "https://jsonplaceholder.typicode.com/posts/" + id,
+        {
+            method: "PUT",
+
+            headers: {
+                "Content-type":
+                    "application/json; charset=UTF-8"
+            },
+
+            body: JSON.stringify(updatedInitiative)
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error(
+            `Update request failed: ${response.status}`
+        );
+    }
+
+    return await response.json();
+}
+
+
+// ==========================================
+// DAY 30 - DELETE REQUEST
+// ==========================================
+
+export async function deleteInitiative(id) {
+
+    const response =  await fetchWithRetry(
+        "https://jsonplaceholder.typicode.com/posts/" + id,
+        {
+            method: "DELETE"
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error(
+            `Delete request failed: ${response.status}`
+        );
+    }
+
+    return true;
+}
+
+
+// ==========================================
+// DAY 31 - INFINITE SCROLL
+// ==========================================
+
+export async function fetchNextPage(currentPage, limit) {
+
+    const response = await fetchWithRetry(
+        `https://jsonplaceholder.typicode.com/posts?_page=${currentPage}&_limit=${limit}`
+    );
+
+    if (!response.ok) {
+        throw new Error(
+            `Request failed: ${response.status}`
+        );
+    }
+
+    return await response.json();
+}
+
+
+// ==========================================
+// DAY 28 - GITHUB USER
+// ==========================================
+
+export async function fetchGithubUser(username) {
+
+   if (userCache.has(username)) {
+
+    const cached = userCache.get(username);
+
+    const cacheAge =
+        Date.now() - cached.timestamp;
+
+    // Cache is valid for 5 minutes
+    if (cacheAge < 5 * 60 * 1000) {
+
+        console.log("Serving from cache!");
+
+        return cached.data;
+    }
+
+    // Cache expired
+    console.log("Cache expired. Fetching fresh data...");
+
+    userCache.delete(username);
+}
+
+    const response = await fetchWithRetry(
+        `https://api.github.com/users/${encodeURIComponent(username)}`
+    );
+
+    if (!response.ok) {
+        throw new Error("GitHub user not found.");
+    }
+
+    const data = await response.json();
+
+    userCache.set(username, {
+    data: data,
+    timestamp: Date.now()
+});
+
+    console.log("Fetched from GitHub and saved to cache!");
+
+    return data;
+}
+
+// ==========================================
+// DAY 28 - GITHUB REPOSITORIES
+// ==========================================
+
+export async function fetchGithubRepositories(username) {
+
+    const response = await fetchWithRetry(
+        `https://api.github.com/users/${encodeURIComponent(username)}/repos?sort=updated&per_page=6`
+    );
+
+    if (!response.ok) {
+        throw new Error(
+            `GitHub API error: ${response.status}`
+        );
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+        throw new Error(
+            "GitHub did not return a repository list."
+        );
+    }
+
+    return data;
+}
